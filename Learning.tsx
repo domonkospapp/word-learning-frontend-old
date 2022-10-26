@@ -1,37 +1,16 @@
+import { useQuery } from '@tanstack/react-query/build/lib/useQuery';
 import * as React from 'react';
+import LearningInput from './LearningInput';
 import './style.css';
-import words from './words';
+import { getWords } from './wordProvider';
 
 const Learning = () => {
-  const pickRandom = () => {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    return words[randomIndex];
-  };
+  const { isLoading, isError, data } = useQuery(['words'], getWords);
 
-  const [currentWord, setCurrentWord] = React.useState(pickRandom());
-  const [answer, setAnswer] = React.useState('');
-
-  const getNewWord = () => {
-    const correct =
-      answer == currentWord.foreign
-        ? `OK`
-        : `Not OK, correct is: ${currentWord.foreign}`;
-    alert(correct);
-    setAnswer('');
-    setCurrentWord(pickRandom);
-  };
-
-  const updateAnswer = (e) => {
-    setAnswer(e.target.value);
-  };
-
-  return (
-    <div>
-      Word: {currentWord.original}
-      <br />
-      Foreign: <input type="text" value={answer} onChange={updateAnswer} />
-      <button onClick={getNewWord}>Submit</button>
-    </div>
+  return isLoading || isError ? (
+    <p>Loading words...</p>
+  ) : (
+    <LearningInput words={data} />
   );
 };
 export default Learning;

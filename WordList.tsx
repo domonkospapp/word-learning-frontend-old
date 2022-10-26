@@ -5,26 +5,10 @@ import {
   getEmailFromLocalStore,
   getUsernameFromLocalStore,
 } from './authProvider';
-import { BACKEND_URL } from './config';
 import './style.css';
+import { getWords } from './wordProvider';
 
 const WordList = () => {
-  const getWords = () => {
-    const username = getUsernameFromLocalStore();
-    const email = getEmailFromLocalStore();
-
-    return fetch(
-      `${BACKEND_URL}/words?username=${username}&email=${email}`
-    ).then((res) => {
-      console.log(res);
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      return res.json();
-    });
-  };
-
   const { isLoading, error, data } = useQuery(['words'], getWords);
 
   const userIsLoggedIn = () =>
