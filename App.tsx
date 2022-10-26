@@ -1,3 +1,4 @@
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout';
@@ -6,6 +7,7 @@ import './style.css';
 import WordList from './WordList';
 
 const App = () => {
+  const queryClient = new QueryClient();
   const router = createBrowserRouter([
     {
       path: '/',
@@ -23,6 +25,10 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 };
 export default App;
