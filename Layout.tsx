@@ -6,6 +6,7 @@ const Layout = () => (
   <div>
     <Link to="/">My words</Link>
     <Link to="learning">Learning</Link>
+    <Link to="Login">Login</Link>
     <Outlet />
   </div>
 );

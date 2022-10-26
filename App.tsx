@@ -3,6 +3,7 @@ import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout';
 import Learning from './Learning';
+import Login from './Login';
 import './style.css';
 import WordList from './WordList';
 
@@ -20,6 +21,10 @@ const App = () => {
         {
           path: '/learning',
           element: <Learning />,
+        },
+        {
+          path: '/login',
+          element: <Login />,
         },
       ],
     },
