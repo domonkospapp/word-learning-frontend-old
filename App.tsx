@@ -52,8 +52,8 @@ export default function App() {
       <br />
       Your words are:
       <ul>
-        {words.map((w) => (
-          <li>
+        {words.map((w, k) => (
+          <li key={k}>
             {w.original} - {w.foreign} ({w.level})
           </li>
         ))}
