@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './style.css';
 
-const LearningInput = ({ words }) => {
+const LearningInput = ({ words, levelUp, levelDown }) => {
   const pickRandom = () => {
     const randomIndex = Math.floor(Math.random() * words.length);
     return words[randomIndex];
@@ -11,11 +11,13 @@ const LearningInput = ({ words }) => {
   const [answer, setAnswer] = React.useState('');
 
   const getNewWord = () => {
-    const correct =
-      answer == currentWord.foreign
-        ? `Correct!`
-        : `Correct is: ${currentWord.foreign}`;
-    alert(correct);
+    if (answer == currentWord.foreign) {
+      alert('Correct!');
+      levelUp(currentWord);
+    } else {
+      alert(`Correct is: ${currentWord.foreign}`);
+      levelDown(currentWord);
+    }
     setAnswer('');
     setCurrentWord(pickRandom);
   };

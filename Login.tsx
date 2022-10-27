@@ -20,6 +20,7 @@ const Login = () => {
   };
 
   const login = () => {
+    alert('Done');
     setUsernameToLocalStore(username);
     setEmailToLocalStore(email);
   };
@@ -29,6 +30,7 @@ const Login = () => {
   };
 
   const logout = () => {
+    alert('Done');
     removeUsernameFromLocalStore();
     removeEmailFromLocalStore();
   };
