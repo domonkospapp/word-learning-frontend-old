@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query/build/lib/useQuery';
 import * as React from 'react';
 import LearningInput from './LearningInput';
-import './style.css';
-import { getWords, updateWord } from './wordProvider';
+import '../style.css';
+import { getWords, updateWord } from '../services/wordProvider';
 
 const Learning = () => {
   const { isLoading, isError, data } = useQuery(['words'], getWords);

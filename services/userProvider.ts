@@ -1,4 +1,4 @@
-import { BACKEND_URL } from './config';
+import { BACKEND_URL } from '../config';
 
 const USERS_BASE_URL = `${BACKEND_URL}/users`;
 

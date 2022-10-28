@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query/build/lib/useQuery';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import '../style.css';
+import { getWords } from '../services/wordProvider';
 import {
   getEmailFromLocalStore,
   getUsernameFromLocalStore,
-} from './authProvider';
-import './style.css';
-import { getWords } from './wordProvider';
+} from '../services/authProvider';
 
 const WordList = () => {
   const { isLoading, error, data } = useQuery(['words'], getWords);
@@ -37,7 +37,7 @@ const WordList = () => {
                     </li>
                   ))}
               </ul>
-              <Link to="/words/create">Add new word</Link>
+              <Link to="words/create">Add new word</Link>
             </div>
           )}
         </div>

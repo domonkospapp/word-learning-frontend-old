@@ -5,7 +5,7 @@ import './style.css';
 const Layout = () => (
   <div>
     <Link to="/">My words</Link>|<Link to="learning">Learning</Link>|
-    <Link to="Login">Login</Link>
+    <Link to="login">Login</Link>
     <Outlet />
   </div>
 );

@@ -4,9 +4,9 @@ import {
   removeUsernameFromLocalStore,
   setEmailToLocalStore,
   setUsernameToLocalStore,
-} from './authProvider';
-import './style.css';
-import { createUser } from './userProvider';
+} from '../services/authProvider';
+import { createUser } from '../services/userProvider';
+import '../style.css';
 
 const Login = () => {
   const [username, setUsername] = React.useState('');

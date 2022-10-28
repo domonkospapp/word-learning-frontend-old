@@ -2,11 +2,11 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout';
-import Learning from './Learning';
-import Login from './Login';
 import './style.css';
-import WordList from './WordList';
+import Login from './users/Login';
 import CreateWord from './words/CreateWord';
+import Learning from './words/Learning';
+import WordList from './words/WordList';
 
 const App = () => {
   const queryClient = new QueryClient();

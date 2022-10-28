@@ -2,7 +2,7 @@ import {
   getEmailFromLocalStore,
   getUsernameFromLocalStore,
 } from './authProvider';
-import { BACKEND_URL } from './config';
+import { BACKEND_URL } from '../config';
 
 const WORDS_BASE_URL = `${BACKEND_URL}/words`;
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../style.css';
 import { useNavigate } from 'react-router-dom';
-import { createWord } from '../wordProvider';
+import { createWord } from '../services/wordProvider';
 
 const CreateWord = () => {
   const navigate = useNavigate();
