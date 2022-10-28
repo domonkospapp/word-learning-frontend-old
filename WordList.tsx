@@ -28,14 +28,17 @@ const WordList = () => {
               <Link to="Login">Go to the login page</Link>
             </p>
           ) : (
-            <ul>
-              {data &&
-                data.map((w, k) => (
-                  <li key={k}>
-                    {w.original} - {w.foreign} ({w.level})
-                  </li>
-                ))}
-            </ul>
+            <div>
+              <ul>
+                {data &&
+                  data.map((w, k) => (
+                    <li key={k}>
+                      {w.original} - {w.foreign} ({w.level})
+                    </li>
+                  ))}
+              </ul>
+              <Link to="/words/create">Add new word</Link>
+            </div>
           )}
         </div>
       ) : (

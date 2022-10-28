@@ -6,6 +6,7 @@ import Learning from './Learning';
 import Login from './Login';
 import './style.css';
 import WordList from './WordList';
+import CreateWord from './words/CreateWord';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -17,6 +18,10 @@ const App = () => {
         {
           path: '/',
           element: <WordList />,
+        },
+        {
+          path: '/words/create',
+          element: <CreateWord />,
         },
         {
           path: '/learning',
