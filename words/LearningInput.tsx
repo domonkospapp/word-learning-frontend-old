@@ -16,7 +16,7 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
   };
 
   const evaulate = () => {
-    if (answer == currentWord.foreign) {
+    if (isAnswerCorrect()) {
       levelUp(currentWord);
     } else {
       levelDown(currentWord);
@@ -30,6 +30,10 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
     setWaitingForAnswer(true);
   };
 
+  const isAnswerCorrect = () => {
+    return answer.toLowerCase() == currentWord.foreign?.toLowerCase();
+  };
+
   return waitingForAnswer ? (
     <div>
       Word: {currentWord?.original}
@@ -40,9 +44,7 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
   ) : (
     <div>
       <p>
-        {answer == currentWord.foreign
-          ? 'Correct!'
-          : `Correct is: ${currentWord.foreign}`}
+        {isAnswerCorrect() ? 'Correct!' : `Correct is: ${currentWord.foreign}`}
       </p>
       <button onClick={getNextWord}>Next word</button>
     </div>
