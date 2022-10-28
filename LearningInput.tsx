@@ -9,29 +9,42 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
 
   const [currentWord, setCurrentWord] = React.useState(pickRandom());
   const [answer, setAnswer] = React.useState('');
-
-  const getNewWord = () => {
-    if (answer == currentWord.foreign) {
-      alert('Correct!');
-      levelUp(currentWord);
-    } else {
-      alert(`Correct is: ${currentWord.foreign}`);
-      levelDown(currentWord);
-    }
-    setAnswer('');
-    setCurrentWord(pickRandom);
-  };
+  const [waitingForAnswer, setWaitingForAnswer] = React.useState(true);
 
   const updateAnswer = (e) => {
     setAnswer(e.target.value);
   };
 
-  return (
+  const evaulate = () => {
+    if (answer == currentWord.foreign) {
+      levelUp(currentWord);
+    } else {
+      levelDown(currentWord);
+    }
+    setWaitingForAnswer(false);
+  };
+
+  const getNextWord = () => {
+    setAnswer('');
+    setCurrentWord(pickRandom);
+    setWaitingForAnswer(true);
+  };
+
+  return waitingForAnswer ? (
     <div>
       Word: {currentWord?.original}
       <br />
       Foreign: <input type="text" value={answer} onChange={updateAnswer} />
-      <button onClick={getNewWord}>Submit</button>
+      <button onClick={evaulate}>Submit</button>
+    </div>
+  ) : (
+    <div>
+      <p>
+        {answer == currentWord.foreign
+          ? 'Correct!'
+          : `Correct is: ${currentWord.foreign}`}
+      </p>
+      <button onClick={getNextWord}>Next word</button>
     </div>
   );
 };
