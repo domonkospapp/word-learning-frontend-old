@@ -6,6 +6,7 @@ import {
   setUsernameToLocalStore,
 } from './authProvider';
 import './style.css';
+import { createUser } from './userProvider';
 
 const Login = () => {
   const [username, setUsername] = React.useState('');
@@ -26,6 +27,10 @@ const Login = () => {
   };
 
   const registration = () => {
+    createUser({
+      username: username,
+      email: email,
+    });
     alert('Create user request...');
   };
 
