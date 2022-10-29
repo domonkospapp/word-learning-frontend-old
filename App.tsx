@@ -1,6 +1,7 @@
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ImportWords from './importer/ImportWords';
 import Layout from './Layout';
 import './style.css';
 import Login from './users/Login';
@@ -22,6 +23,10 @@ const App = () => {
         {
           path: '/words/create',
           element: <CreateWord />,
+        },
+        {
+          path: '/words/import',
+          element: <ImportWords />,
         },
         {
           path: '/learning',
