@@ -34,6 +34,11 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
     return answer.toLowerCase() == currentWord.foreign?.toLowerCase();
   };
 
+  const playPronunciation = () => {
+    var msg = new SpeechSynthesisUtterance(currentWord.foreign);
+    window.speechSynthesis.speak(msg);
+  };
+
   return waitingForAnswer ? (
     <div>
       Word: {currentWord?.original}
@@ -46,6 +51,9 @@ const LearningInput = ({ words, levelUp, levelDown }) => {
       <p>
         {isAnswerCorrect() ? 'Correct!' : `Correct is: ${currentWord.foreign}`}
       </p>
+
+      <button onClick={playPronunciation}>Pronunce it!</button>
+      <br />
       <button onClick={getNextWord}>Next word</button>
     </div>
   );
